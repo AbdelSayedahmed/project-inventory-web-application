@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0px;
+    font-family: Bitter;
+    font-weight: 500;
+}
+
+header {
+    margin: 0px;
+    text-align: center;
+    background-color: #2e59a3;
+}
+
+header nav {
+    display: flex;
+    width: 100%;
+}
+
+header nav div {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+header nav div:hover {
+    color: white;
+    background-color: black;
+    padding: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+main {
+    border: 2px solid red;
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+main div{
+    border: 2px solid red;
+    width: 49%;
+    margin-bottom: 0.5em;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+main div img {
+    width: 100px;
+}
+
+main div p {
+}
