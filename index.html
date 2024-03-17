@@ -3,39 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cars Inventory App</title>
+    <title>The Thrift Store</title>
     <link rel="stylesheet" href="/style.css"/>
     <link rel="icon" type="image/x-icon" href="">
-    <script href="index.js" defer></script>
+    <script src="/index.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Cars Inventory</h1>
+        <h1>The Thrift Store Inventory</h1>
         <nav>
             <div>Home</div>
             <div>About Us</div>
             <div>Contact Us</div>
-            <div>Upload Your Car</div>
+            <div onclick="openNav()">Upload Your Item</div>
         </nav>
     </header>
     <main>
-        <div>
+        <div class="uploaded-item">
             <img src="/assets/placeholder.webp" alt="placeholder"/>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati atque voluptatum dolorum perspiciatis ducimus quae nisi accusamus, voluptates eaque nostrum! Vel blanditiis accusamus, alias quae sit debitis inventore dolorum dignissimos.</p>
         </div>
-        <div>
+        <div class="uploaded-item">
             <img src="/assets/placeholder.webp" alt="placeholder"/>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati atque voluptatum dolorum perspiciatis ducimus quae nisi accusamus, voluptates eaque nostrum! Vel blanditiis accusamus, alias quae sit debitis inventore dolorum dignissimos.</p>
         </div>
-        <div>
+        <div class="uploaded-item">
             <img src="/assets/placeholder.webp" alt="placeholder"/>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati atque voluptatum dolorum perspiciatis ducimus quae nisi accusamus, voluptates eaque nostrum! Vel blanditiis accusamus, alias quae sit debitis inventore dolorum dignissimos.</p>
         </div>
-        <div>
+        <div class="uploaded-item">
             <img src="/assets/placeholder.webp" alt="placeholder"/>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati atque voluptatum dolorum perspiciatis ducimus quae nisi accusamus, voluptates eaque nostrum! Vel blanditiis accusamus, alias quae sit debitis inventore dolorum dignissimos.</p>
         </div>
     </main>
-    <footer></footer>
+    <aside>
+        <div id="form" class="overlay">
+            <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+            <fieldset>
+                <legend>Your Item</legend>
+                <form>
+                    <div>
+                      <label for="Item Name">Name</label>
+                      <input type="text" id="Item Name" name="Item Name" required />
+                    </div>
+                    <div>
+                      <label for="description">Description</label>
+                      <input type="text" id="description" name="description" />
+                    </div>
+                    <div>
+                      <label for="img">Image(s) Url</label>
+                      <input type="text" id="img" name="img" />
+                    </div>
+                    <div>
+                      <label for="price">Price</label>
+                      <input type="text" id="price" name="price" required />
+                    </div>
+                    <div>
+                      <label for="consdition">Condition</label>
+                      <select id="consdition">
+                        <option selected disabled>--Select One--</option>
+                        <option value="new">New</option>
+                        <option value="like-new">Like New</option>
+                        <option value="used">Used</option>
+                        <option value="damaged">Damaged</option>
+                      </select>
+                    </div>
+                    <input type="reset" value="Reset" id="reset" />
+                    <input type="submit" value="Upload" id="upload" />
+                  </form>
+            </fieldset>
+        </div>
+    </aside>
+    <footer>
+
+    </footer>
 </body>
 </html>

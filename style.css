@@ -4,6 +4,7 @@ body {
     margin: 0px;
     font-family: Bitter;
     font-weight: 500;
+    z-index: 0;
 }
 
 header {
@@ -38,7 +39,8 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-main div{
+
+main div {
     border: 2px solid red;
     width: 49%;
     margin-bottom: 0.5em;
@@ -47,6 +49,92 @@ main div{
 }
 
 main div img {
-    width: 100px;
+    width: 200px;
 }
 
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  /* transition: 0.5s; */
+}
+
+.close-btn {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+  
+.close-btn:hover, .close-btn:focus {
+    color: #f1f1f1;
+}
+
+.overlay .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+fieldset {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-color: white;
+    width: 65%;
+    height: 65%;
+    overflow: auto;
+}
+
+legend {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px 20px;
+}
+
+#description {
+    height: 200px;
+}
+
+#reset,
+#upload {
+  border: 0;
+  border-radius: 6px;
+  padding: 7px 45px;
+  margin-right: 3px;
+}
+
+#upload:hover,
+#reset:hover {
+  background-color: #0b6396;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  background-color: #1296e3;
+  font-weight: bold;
+}
+
+input[type="reset"] {
+  background-color: #cacccf;
+  font-weight: bold;
+}
