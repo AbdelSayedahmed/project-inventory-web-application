@@ -40,7 +40,7 @@ main {
     justify-content: space-between;
 }
 
-main div {
+.uploaded-item {
     border: 2px solid red;
     width: 49%;
     margin-bottom: 0.5em;
@@ -62,7 +62,7 @@ main div img {
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0, 0.9);
   overflow-x: hidden;
-  /* transition: 0.5s; */
+  transition: 0.5s;
 }
 
 .close-btn {
