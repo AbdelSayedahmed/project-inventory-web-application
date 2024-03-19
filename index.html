@@ -18,15 +18,17 @@
             <div class="nav-item" onclick="openNav()">Upload Your Item</div>
         </nav>
     </header>
-    <main>
+    <main id="main">
       <div class="uploaded-item">
         <img class="uploaded-image" src="/assets/placeholder.webp" alt="placeholder" />
-        <div class="uplaoded-box">
+        <div class="uplaoded-card">
           <h3 class="uploaded-title">Placeholder</h3>
           <p class="uploaded-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati atque voluptatum dolorum perspiciatis ducimus quae nisi accusamus, voluptates eaque nostrum! Vel blanditiis accusamus, alias quae sit debitis inventore dolorum dignissimos.</p>
-          <div class="price-condition container">
-            <span>Like New - $10.99</span>
-          </div>
+          <span class="price-condition container">Like New - $10.99</span>
+          <nav class="edit-del-btn">
+            <button class="edit btn">Edit</button>
+            <button class="del btn">Remove</button>
+          </nav>
         </div>
       </div>
     </main>
@@ -38,35 +40,43 @@
                 <form id="item-form">
                     <div class="form-inputs">
                       <label for="Item Name">Name</label>
-                      <input id="name-input" type="text" id="Item Name" name="Item Name" required />
+                      <input id="name-input" type="text" name="Item Name" required />
                     </div>
                     <div class="form-inputs">
                       <label for="description">Description</label>
-                      <input id="description-input"  type="text" id="description" name="description" />
+                      <input id="description-input"  type="text" name="description" />
                     </div>
                     <div class="form-inputs">
                       <label for="img">Image(s) Url</label>
-                      <input id="img-input" type="text" id="img" name="img" />
+                      <input id="img-input" type="text" name="img" />
                     </div>
                     <div class="form-inputs">
                       <label for="price">Price</label>
-                      <input id="price-input"  type="text" id="price" name="price" required />
+                      <input id="price-input"  type="text" name="price" required />
                     </div>
                     <div class="form-inputs">
                       <label for="condition">Condition</label>
-                      <select id="condition">
-                        <option selected disabled>--Select One--</option>
-                        <option value="new">New</option>
-                        <option value="like-new">Like New</option>
-                        <option value="used">Used</option>
-                        <option value="damaged">Damaged</option>
+                      <select id="condition" required>
+                        <option value="New">New</option>
+                        <option value="Like New">Like New</option>
+                        <option value="Used">Used</option>
+                        <option value="Damaged">Damaged</option>
                       </select>
                     </div>
-                    <input type="reset" value="Reset" id="reset" />
+                    <input type="reset" value="Reset" id="form-reset" />
                     <input type="submit" value="Upload" id="upload" />
                   </form>
+                  <div id="errorText" class="error"></div>
             </fieldset>
         </div>
+    </aside>
+    <aside>
+      <div id="popup">
+        <a href="javascript:void(0)" class="close-btn" onclick="closePopUp()">&times;</a>
+        <p>Are you sure you want to remove?</p>
+        <button class="cancel btn">Cancel</button>
+        <button class="make-sure-del btn" onclick="">Remove</button>
+      </div>
     </aside>
     <footer>
 

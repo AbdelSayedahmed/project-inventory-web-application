@@ -32,7 +32,7 @@ header nav div:hover {
     cursor: pointer;
 }
 
-main {
+#main {
     border: 2px solid red;
     margin: 1em;
     display: flex;
@@ -48,11 +48,41 @@ main {
     grid-template-columns: 1fr 2fr;
 }
 
-main div img {
+.uploaded-image {
     width: 200px;
+    margin: 10px;
 }
 
-.overlay {
+.edit-del-btn {
+    text-align: right;
+    margin: 10px;
+}
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 12px;
+    color: white;
+    background-color: #919191;
+    margin-left: 7px;
+}
+
+.btn:hover {
+    background-color: #808080;
+    cursor: pointer;
+}
+
+.del, .make-sure-del {
+    background-color: #eb5757;
+}
+
+.del:hover, .make-sure-del:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+
+.overlay, #popup {
   height: 100%;
   width: 0;
   position: fixed;
@@ -78,7 +108,7 @@ main div img {
     color: #f1f1f1;
 }
 
-.overlay .close-btn {
+.overlay .close-btn, #popup {
   position: absolute;
   top: 20px;
   right: 45px;
@@ -115,7 +145,7 @@ form div {
     height: 200px;
 }
 
-#reset,
+#form-reset,
 #upload {
   border: 0;
   border-radius: 6px;
@@ -124,7 +154,7 @@ form div {
 }
 
 #upload:hover,
-#reset:hover {
+#form-reset:hover {
   background-color: #0b6396;
   cursor: pointer;
 }
@@ -137,4 +167,9 @@ input[type="submit"] {
 input[type="reset"] {
   background-color: #cacccf;
   font-weight: bold;
+}
+
+.error {
+    display: none;
+    color: red;
 }
