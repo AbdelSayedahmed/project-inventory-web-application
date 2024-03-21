@@ -8,6 +8,8 @@ const openEdit = () => (document.getElementById("edit-form-div").style.width = "
 const closeEdit = () => (document.getElementById("edit-form-div").style.width = "0%");
 
 const closeBtn = document.querySelector(".close-btn");
+const closeEditBtn = document.querySelector(".close-edit-btn");
+
 
 const upload = document.getElementById("upload");
 const formReset = document.getElementById("form-reset");
@@ -18,8 +20,12 @@ const sureDelBtn = document.querySelector(".make-sure-del");
 const cancel = document.querySelector(".cancel");
 const editForm = document.getElementById("edit-form");
 
+closeEditBtn.addEventListener("click", () => {
+  closeEdit();
+});
+
 closeBtn.addEventListener("click", () => {
-  closeForm();
+  closeForm(); 
   form.reset();
   return;
 });
@@ -117,6 +123,7 @@ form.addEventListener("submit", (e) => {
 
     errorText.style.display = "none";
     priceCondContainer.innerText = `${condition} - $${editPrice}`;
+    price = editPrice;
 
     closeEdit();
   });

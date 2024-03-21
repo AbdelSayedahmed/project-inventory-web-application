@@ -13,18 +13,23 @@ header {
     background-color: #2e59a3;
 }
 
-header nav {
+header h1 {
+    margin: 0;
+    padding: 30px;
+}
+
+.nav-bar { 
     display: flex;
     width: 100%;
 }
 
-header nav div {
+.nav-item {
     background-color: white;
     padding: 10px;
     border: 1px solid black;
 }
 
-header nav div:hover {
+.nav-item:hover {
     color: white;
     background-color: black;
     padding: 10px;
@@ -33,7 +38,6 @@ header nav div:hover {
 }
 
 #main {
-    border: 2px solid red;
     margin: 1em;
     display: flex;
     flex-wrap: wrap;
@@ -41,7 +45,6 @@ header nav div:hover {
 }
 
 .uploaded-item {
-    border: 2px solid red;
     width: 49%;
     margin-bottom: 0.5em;
     display: grid;
@@ -49,6 +52,8 @@ header nav div:hover {
 }
 
 .uploaded-image {
+    margin: auto;
+    top: 0; bottom: 0; left: 0; right: 0;
     width: 200px;
     margin: 10px;
 }
@@ -95,7 +100,7 @@ header nav div:hover {
   transition: 0.5s;
 }
 
-.close-btn {
+.close-btn, .close-edit-btn {
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
@@ -104,11 +109,11 @@ header nav div:hover {
     transition: 0.3s;
 }
   
-.close-btn:hover, .close-btn:focus {
+.close-btn:hover, .close-edit-btn:hover {
     color: #f1f1f1;
 }
 
-.overlay .close-btn {
+.overlay .close-btn, .close-edit-btn {
   position: absolute;
   top: 20px;
   right: 45px;
