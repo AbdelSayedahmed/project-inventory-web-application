@@ -15,7 +15,7 @@
             <div class="nav-item">Home</div>
             <div class="nav-item">About Us</div>
             <div class="nav-item">Contact Us</div>
-            <div class="nav-item" onclick="openNav()">Upload Your Item</div>
+            <div class="nav-item" onclick="openForm()">Upload Your Item</div>
         </nav>
     </header>
     <main id="main">
@@ -34,29 +34,29 @@
     </main>
     <aside>
         <div id="form" class="overlay">
-            <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+            <a href="javascript:void(0)" class="close-btn">&times;</a>
             <fieldset>
                 <legend>Your Item</legend>
                 <form id="item-form">
                     <div class="form-inputs">
-                      <label for="Item Name">Name</label>
+                      <label for="name-input">Name</label>
                       <input id="name-input" type="text" name="Item Name" required />
                     </div>
                     <div class="form-inputs">
-                      <label for="description">Description</label>
+                      <label for="description-input">Description</label>
                       <input id="description-input"  type="text" name="description" />
                     </div>
                     <div class="form-inputs">
-                      <label for="img">Image(s) Url</label>
+                      <label for="img-input">Image(s) Url</label>
                       <input id="img-input" type="text" name="img" />
                     </div>
                     <div class="form-inputs">
-                      <label for="price">Price</label>
+                      <label for="price-input">Price</label>
                       <input id="price-input"  type="text" name="price" required />
                     </div>
                     <div class="form-inputs">
-                      <label for="condition">Condition</label>
-                      <select id="condition" required>
+                      <label for="condition-input">Condition</label>
+                      <select id="condition-input" required>
                         <option value="New">New</option>
                         <option value="Like New">Like New</option>
                         <option value="Used">Used</option>
@@ -66,7 +66,7 @@
                     <input type="reset" value="Reset" id="form-reset" />
                     <input type="submit" value="Upload" id="upload" />
                   </form>
-                  <div id="errorText" class="error"></div>
+                  <div class="error"></div>
             </fieldset>
         </div>
     </aside>
@@ -75,12 +75,25 @@
         <div id="popup-bin">
           <p>Are you sure you want to remove?</p>
           <button class="cancel btn">Cancel</button>
-          <button class="make-sure-del btn" onclick="">Remove</button>
+          <button class="make-sure-del btn">Remove</button>
         </div>
       </div>
     </aside>
+    <aside>
+      <div id="edit-form-div" class="overlay">
+        <a href="javascript:void(0)" class="close-btn">&times;</a>
+        <fieldset>
+            <legend>Change Price</legend>
+            <form id="edit-form">
+              <label for="edit-price-input">Price</label>
+              <input id="edit-price-input" type="text" name="price" />
+              <input type="submit" value="Save" id="upload" />
+            </form>
+            <div class="error"></div>
+        </fieldset>
+    </div>
+    </aside>
     <footer>
-
     </footer>
 </body>
 </html>

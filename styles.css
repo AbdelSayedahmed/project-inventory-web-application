@@ -82,7 +82,7 @@ header nav div:hover {
 }
 
 
-.overlay, #popup {
+.overlay, #popup { 
   height: 100%;
   width: 0;
   position: fixed;
@@ -92,7 +92,7 @@ header nav div:hover {
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0, 0.9);
   overflow-x: hidden;
-  /* transition: 0.5s; */
+  transition: 0.5s;
 }
 
 .close-btn {

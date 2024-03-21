@@ -1,16 +1,28 @@
-const openNav = () => (document.getElementById("form").style.width = "100%");
-const closeNav = () => (document.getElementById("form").style.width = "0%");
+const openForm = () => (document.getElementById("form").style.width = "100%");
+const closeForm = () => (document.getElementById("form").style.width = "0%");
 
 const openPopUp = () => (document.getElementById("popup").style.width = "100%");
 const closePopUp = () => (document.getElementById("popup").style.width = "0%");
+
+const openEdit = () => (document.getElementById("edit-form-div").style.width = "100%");
+const closeEdit = () => (document.getElementById("edit-form-div").style.width = "0%");
+
+const closeBtn = document.querySelector(".close-btn");
 
 const upload = document.getElementById("upload");
 const formReset = document.getElementById("form-reset");
 const form = document.getElementById("item-form");
 const main = document.getElementById("main");
-const errorText = document.getElementById("errorText");
+const errorText = document.querySelector(".error");
 const sureDelBtn = document.querySelector(".make-sure-del");
 const cancel = document.querySelector(".cancel");
+const editForm = document.getElementById("edit-form");
+
+closeBtn.addEventListener("click", () => {
+  closeForm();
+  form.reset();
+  return;
+});
 
 formReset.addEventListener("click", () => {
   form.reset();
@@ -18,13 +30,12 @@ formReset.addEventListener("click", () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(e.target);
 
   const itemName = document.getElementById("name-input").value;
   const description = document.getElementById("description-input").value;
   const inputImg = document.getElementById("img-input").value;
-  const price = document.getElementById("price-input").value;
-  const condition = document.getElementById("condition").value;
+  let price = document.getElementById("price-input").value;
+  const condition = document.getElementById("condition-input").value;
 
   const validPrice = /^\d{1,8}(?:\.\d{1,4})?$/;
 
@@ -92,9 +103,30 @@ form.addEventListener("submit", (e) => {
 
   cancel.addEventListener("click", () => {
     closePopUp();
-  })
+  });
+
+  editForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const editPrice = document.getElementById("edit-price-input").value;
+
+    if (!validPrice.test(editPrice)) {
+      errorText.style.display = "block";
+      errorText.innerText = `Please enter valid price like 10.99 or 1.44`;
+      return;
+    }
+
+    errorText.style.display = "none";
+    priceCondContainer.innerText = `${condition} - $${editPrice}`;
+
+    closeEdit();
+  });
+
+  editBtn.addEventListener("click", () => {
+    document.getElementById("edit-price-input").value = price;
+    openEdit();
+  });
 
   form.reset();
-  closeNav();
+  closeForm();
 });
 
