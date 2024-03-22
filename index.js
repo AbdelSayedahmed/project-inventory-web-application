@@ -10,7 +10,6 @@ const closeEdit = () => (document.getElementById("edit-form-div").style.width = 
 const closeBtn = document.querySelector(".close-btn");
 const closeEditBtn = document.querySelector(".close-edit-btn");
 
-
 const upload = document.getElementById("upload");
 const formReset = document.getElementById("form-reset");
 const form = document.getElementById("item-form");
@@ -37,11 +36,11 @@ formReset.addEventListener("click", () => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const itemName = document.getElementById("name-input").value;
-  const description = document.getElementById("description-input").value;
-  const inputImg = document.getElementById("img-input").value;
+  let itemName = document.getElementById("name-input").value;
+  let description = document.getElementById("description-input").value;
+  let inputImg = document.getElementById("img-input").value;
   let price = document.getElementById("price-input").value;
-  const condition = document.getElementById("condition-input").value;
+  let condition = document.getElementById("condition-input").value;
 
   const validPrice = /^\d{1,8}(?:\.\d{1,4})?$/;
 
@@ -113,7 +112,12 @@ form.addEventListener("submit", (e) => {
 
   editForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    const editTitle = document.getElementById("edit-title-input").value;
+    const editDescription = document.getElementById("edit-description-input").value;
+    const editImg = document.getElementById("edit-img-input").value;
     const editPrice = document.getElementById("edit-price-input").value;
+    const editCondition = document.getElementById("edit-condition-input").value;
 
     if (!validPrice.test(editPrice)) {
       errorText.style.display = "block";
@@ -122,14 +126,27 @@ form.addEventListener("submit", (e) => {
     }
 
     errorText.style.display = "none";
-    priceCondContainer.innerText = `${condition} - $${editPrice}`;
-    price = editPrice;
 
+    displayTitle.innerText = editTitle;
+    displayDescription.innerText = editDescription;
+    displayImg.innerText = editImg;
+    priceCondContainer.innerText = `${editCondition} - $${editPrice}`;
+
+    itemName = editTitle;
+    description = editDescription;
+    inputImg = editImg;
+    price = editPrice;
+    condition = editCondition;
+    
     closeEdit();
   });
 
   editBtn.addEventListener("click", () => {
+    document.getElementById("edit-title-input").value = itemName;
+    document.getElementById("edit-description-input").value = description;
+    document.getElementById("edit-img-input").value = inputImg;
     document.getElementById("edit-price-input").value = price;
+    document.getElementById("edit-condition-input").value = condition;
     openEdit();
   });
 

@@ -13,7 +13,7 @@ header {
     background-color: #2e59a3;
 }
 
-header h1 {
+h1 {
     margin: 0;
     padding: 30px;
 }
@@ -87,7 +87,6 @@ header h1 {
     cursor: pointer;
 }
 
-
 .overlay, #popup { 
   height: 100%;
   width: 0;
@@ -155,14 +154,10 @@ legend {
     padding: 10px;
 }
 
-form div {
+.form-inputs {
     display: flex;
     flex-direction: column;
     margin: 20px 0px 20px;
-}
-
-#description {
-    height: 200px;
 }
 
 #form-reset,
