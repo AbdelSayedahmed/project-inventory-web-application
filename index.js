@@ -51,6 +51,7 @@ form.addEventListener("submit", (e) => {
   }
 
   errorText.style.display = "none";
+  
   // Create item profile container
   const result = document.createElement("div");
   result.className = "uploaded-item";
@@ -129,7 +130,8 @@ form.addEventListener("submit", (e) => {
 
     displayTitle.innerText = editTitle;
     displayDescription.innerText = editDescription;
-    displayImg.innerText = editImg;
+    displayImg.src = editImg;
+    displayImg.alt = `image of ${editImg}`;
     priceCondContainer.innerText = `${editCondition} - $${editPrice}`;
 
     itemName = editTitle;
