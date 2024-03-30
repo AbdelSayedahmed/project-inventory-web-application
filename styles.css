@@ -7,6 +7,30 @@ body {
     z-index: 0;
 }
 
+img { 
+    font-weight: 600;
+    line-height: 2; 
+    text-align: center;
+    top: 0; bottom: 0; left: 0; right: 0;
+    width: auto;
+    margin: 10px;
+    height: auto;
+    display: block;
+    position: relative;
+}
+  
+img:before { 
+    content: "We're sorry, the link below is broken :(";
+    display: block;
+    margin-bottom: 10px;
+}
+  
+img:after { 
+    content: "(url: " attr(src) ")";
+    display: block;
+    font-size: 12px;
+}
+
 header {
     margin: 0px;
     text-align: center;
@@ -55,6 +79,8 @@ a {
     margin-bottom: 0.5em;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    border: 2px solid black;
+    border-radius: 7px;
 }
 
 .uploaded-image {
@@ -62,6 +88,7 @@ a {
     top: 0; bottom: 0; left: 0; right: 0;
     width: 200px;
     margin: 10px;
+    border: 1px solid grey;
 }
 
 .edit-del-btn {
