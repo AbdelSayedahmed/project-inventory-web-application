@@ -4,8 +4,10 @@ const closeForm = () => (document.getElementById("form").style.width = "0%");
 const openPopUp = () => (document.getElementById("popup").style.width = "100%");
 const closePopUp = () => (document.getElementById("popup").style.width = "0%");
 
-const openEdit = () => (document.getElementById("edit-form-div").style.width = "100%");
-const closeEdit = () => (document.getElementById("edit-form-div").style.width = "0%");
+const openEdit = () =>
+  (document.getElementById("edit-form-div").style.width = "100%");
+const closeEdit = () =>
+  (document.getElementById("edit-form-div").style.width = "0%");
 
 const closeBtn = document.querySelector(".close-btn");
 const closeEditBtn = document.querySelector(".close-edit-btn");
@@ -21,7 +23,10 @@ const editForm = document.getElementById("edit-form");
 
 closeEditBtn.addEventListener("click", () => closeEdit());
 
-closeBtn.addEventListener("click", () => {closeForm(); form.reset();});
+closeBtn.addEventListener("click", () => {
+  closeForm();
+  form.reset();
+});
 
 formReset.addEventListener("click", () => form.reset());
 
@@ -96,7 +101,7 @@ form.addEventListener("submit", (e) => {
     openPopUp();
 
     sureDelBtn.addEventListener("click", () => {
-      main.removeChild(result); 
+      main.removeChild(result);
       closePopUp();
     });
 
@@ -112,7 +117,9 @@ form.addEventListener("submit", (e) => {
 
     const capItemTitle = curr.querySelector(".uploaded-title").innerText;
     const capImg = curr.querySelector(".uploaded-image").src;
-    const capDescription = curr.querySelector(".uploaded-description").innerText;
+    const capDescription = curr.querySelector(
+      ".uploaded-description"
+    ).innerText;
     const capPrice = curr.querySelector(".uploaded-price").innerText;
     const capCondition = curr.querySelector(".uploaded-condition").innerText;
 
@@ -128,21 +135,28 @@ form.addEventListener("submit", (e) => {
     console.log(currentItem);
     console.log(editCurr);
 
-    editCurr.querySelector("#edit-title-input").value = currentItem.capItemTitle;
-    editCurr.querySelector("#edit-description-input").value = currentItem.capDescription;
+    editCurr.querySelector("#edit-title-input").value =
+      currentItem.capItemTitle;
+    editCurr.querySelector("#edit-description-input").value =
+      currentItem.capDescription;
     editCurr.querySelector("#edit-img-input").value = currentItem.capImg;
     editCurr.querySelector("#edit-price-input").value = currentItem.capPrice;
-    editCurr.querySelector("#edit-condition-input").value = currentItem.capCondition;
+    editCurr.querySelector("#edit-condition-input").value =
+      currentItem.capCondition;
 
     // Event listener for the edit form submit
     editForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
       const editTitle = document.getElementById("edit-title-input").value;
-      const editDescription = document.getElementById("edit-description-input").value;
+      const editDescription = document.getElementById(
+        "edit-description-input"
+      ).value;
       const editImg = document.getElementById("edit-img-input").value;
       const editPrice = document.getElementById("edit-price-input").value;
-      const editCondition = document.getElementById("edit-condition-input").value;
+      const editCondition = document.getElementById(
+        "edit-condition-input"
+      ).value;
 
       if (!validPrice.test(editPrice)) {
         errorText.style.display = "block";
@@ -158,9 +172,9 @@ form.addEventListener("submit", (e) => {
       curr.alt = `image of ${editImg}`;
       curr.querySelector(".uploaded-price").innerText = editPrice;
       curr.querySelector(".uploaded-condition").innerText = editCondition;
-      
-      curr = null;
+
       closeEdit();
+      curr = null;
     });
   });
 
