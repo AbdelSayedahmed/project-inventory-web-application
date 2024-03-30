@@ -18,6 +18,11 @@ h1 {
     padding: 30px;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .nav-bar { 
     display: flex;
     width: 100%;

@@ -19,19 +19,11 @@ const sureDelBtn = document.querySelector(".make-sure-del");
 const cancel = document.querySelector(".cancel");
 const editForm = document.getElementById("edit-form");
 
-closeEditBtn.addEventListener("click", () => {
-  closeEdit();
-});
+closeEditBtn.addEventListener("click", () => closeEdit());
 
-closeBtn.addEventListener("click", () => {
-  closeForm(); 
-  form.reset();
-  return;
-});
+closeBtn.addEventListener("click", () => {closeForm(); form.reset();});
 
-formReset.addEventListener("click", () => {
-  form.reset();
-});
+formReset.addEventListener("click", () => form.reset());
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -46,9 +38,9 @@ form.addEventListener("submit", (e) => {
   const validPrice = /^\d{1,8}(?:\.\d{1,4})?$/;
 
   if (!validPrice.test(price)) {
-      errorText.style.display = "block";
-      errorText.innerText = `Please enter a valid price like 10.99 or 1.44`;
-      return;
+    errorText.style.display = "block";
+    errorText.innerText = `Please enter a valid price like 10.99 or 1.44`;
+    return;
   }
 
   errorText.style.display = "none";
@@ -78,7 +70,7 @@ form.addEventListener("submit", (e) => {
 
   const priceCondContainer = document.createElement("div");
   priceCondContainer.classList.add("price-condition", "container");
-  priceCondContainer.innerText = `${condition} - $${price}`;
+  priceCondContainer.innerHTML = `<span class="uploaded-condition">${condition}</span> - $<span class="uploaded-price">${price}</span> `;
   displayCard.append(priceCondContainer);
 
   const editDelBtnNav = document.createElement("nav");
@@ -101,62 +93,78 @@ form.addEventListener("submit", (e) => {
 
   // Event listener for the delete button
   delBtn.addEventListener("click", () => {
-      openPopUp();
-      sureDelBtn.addEventListener("click", () => {
-          main.removeChild(result);
-          closePopUp();
-      });
-      cancel.addEventListener("click", () => {
-          closePopUp();
-      });
+    openPopUp();
+
+    sureDelBtn.addEventListener("click", () => {
+      main.removeChild(result); 
+      closePopUp();
+    });
+
+    cancel.addEventListener("click", () => closePopUp());
   });
 
   // Event listener for the edit button
-  editBtn.addEventListener("click", () => {
-      openEdit();
-      document.getElementById("edit-title-input").value = itemName;
-      document.getElementById("edit-description-input").value = description;
-      document.getElementById("edit-img-input").value = inputImg;
-      document.getElementById("edit-price-input").value = price;
-      document.getElementById("edit-condition-input").value = condition;
+  editBtn.addEventListener("click", (e) => {
+    openEdit();
+    let curr = e.target.parentNode.parentNode.parentNode;
+    let editCurr = document.getElementById("edit-form");
+    console.log(e.target.parentNode.parentNode.parentNode);
 
-      // Event listener for the edit form submit
-      editForm.addEventListener("submit", (e) => {
-          e.preventDefault();
+    const capItemTitle = curr.querySelector(".uploaded-title").innerText;
+    const capImg = curr.querySelector(".uploaded-image").src;
+    const capDescription = curr.querySelector(".uploaded-description").innerText;
+    const capPrice = curr.querySelector(".uploaded-price").innerText;
+    const capCondition = curr.querySelector(".uploaded-condition").innerText;
 
-          const editTitle = document.getElementById("edit-title-input").value;
-          const editDescription = document.getElementById("edit-description-input").value;
-          const editImg = document.getElementById("edit-img-input").value;
-          const editPrice = document.getElementById("edit-price-input").value;
-          const editCondition = document.getElementById("edit-condition-input").value;
+    // Capture the values for this specific item
+    const currentItem = {
+      capItemTitle,
+      capImg,
+      capDescription,
+      capPrice,
+      capCondition,
+    };
 
-          if (!validPrice.test(editPrice)) {
-              errorText.style.display = "block";
-              errorText.innerText = `Please enter a valid price like 10.99 or 1.44`;
-              return;
-          }
+    console.log(currentItem);
+    console.log(editCurr);
 
-          errorText.style.display = "none";
+    editCurr.querySelector("#edit-title-input").value = currentItem.capItemTitle;
+    editCurr.querySelector("#edit-description-input").value = currentItem.capDescription;
+    editCurr.querySelector("#edit-img-input").value = currentItem.capImg;
+    editCurr.querySelector("#edit-price-input").value = currentItem.capPrice;
+    editCurr.querySelector("#edit-condition-input").value = currentItem.capCondition;
 
-          displayTitle.innerText = editTitle;
-          displayDescription.innerText = editDescription;
-          displayImg.src = editImg;
-          displayImg.alt = `image of ${editImg}`;
-          priceCondContainer.innerText = `${editCondition} - $${editPrice}`;
+    // Event listener for the edit form submit
+    editForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-          // Update the item data
-          itemName = editTitle;
-          description = editDescription;
-          inputImg = editImg;
-          price = editPrice;
-          condition = editCondition;
+      const editTitle = document.getElementById("edit-title-input").value;
+      const editDescription = document.getElementById("edit-description-input").value;
+      const editImg = document.getElementById("edit-img-input").value;
+      const editPrice = document.getElementById("edit-price-input").value;
+      const editCondition = document.getElementById("edit-condition-input").value;
 
-          closeEdit();
-      });
+      if (!validPrice.test(editPrice)) {
+        errorText.style.display = "block";
+        errorText.innerText = `Please enter a valid price like 10.99 or 1.44`;
+        return;
+      }
+
+      errorText.style.display = "none";
+
+      curr.querySelector(".uploaded-title").innerText = editTitle;
+      curr.querySelector(".uploaded-description").innerText = editDescription;
+      curr.querySelector(".uploaded-image").src = editImg;
+      curr.alt = `image of ${editImg}`;
+      curr.querySelector(".uploaded-price").innerText = editPrice;
+      curr.querySelector(".uploaded-condition").innerText = editCondition;
+      
+      curr = null;
+      closeEdit();
+    });
   });
 
   // Reset form and close it
   form.reset();
   closeForm();
 });
-
