@@ -36,6 +36,7 @@ formReset.addEventListener("click", () => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // Retrieve input values
   let itemName = document.getElementById("name-input").value;
   let description = document.getElementById("description-input").value;
   let inputImg = document.getElementById("img-input").value;
@@ -45,13 +46,13 @@ form.addEventListener("submit", (e) => {
   const validPrice = /^\d{1,8}(?:\.\d{1,4})?$/;
 
   if (!validPrice.test(price)) {
-    errorText.style.display = "block";
-    errorText.innerText = `Please enter valid price like 10.99 or 1.44`;
-    return;
+      errorText.style.display = "block";
+      errorText.innerText = `Please enter a valid price like 10.99 or 1.44`;
+      return;
   }
 
   errorText.style.display = "none";
-  
+
   // Create item profile container
   const result = document.createElement("div");
   result.className = "uploaded-item";
@@ -98,60 +99,63 @@ form.addEventListener("submit", (e) => {
   result.append(displayCard);
   main.append(result);
 
+  // Event listener for the delete button
   delBtn.addEventListener("click", () => {
-    openPopUp();
+      openPopUp();
+      sureDelBtn.addEventListener("click", () => {
+          main.removeChild(result);
+          closePopUp();
+      });
+      cancel.addEventListener("click", () => {
+          closePopUp();
+      });
   });
 
-  sureDelBtn.addEventListener("click", () => {
-    main.removeChild(result);
-    closePopUp();
-  });
-
-  cancel.addEventListener("click", () => {
-    closePopUp();
-  });
-
-  editForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const editTitle = document.getElementById("edit-title-input").value;
-    const editDescription = document.getElementById("edit-description-input").value;
-    const editImg = document.getElementById("edit-img-input").value;
-    const editPrice = document.getElementById("edit-price-input").value;
-    const editCondition = document.getElementById("edit-condition-input").value;
-
-    if (!validPrice.test(editPrice)) {
-      errorText.style.display = "block";
-      errorText.innerText = `Please enter valid price like 10.99 or 1.44`;
-      return;
-    }
-
-    errorText.style.display = "none";
-
-    displayTitle.innerText = editTitle;
-    displayDescription.innerText = editDescription;
-    displayImg.src = editImg;
-    displayImg.alt = `image of ${editImg}`;
-    priceCondContainer.innerText = `${editCondition} - $${editPrice}`;
-
-    itemName = editTitle;
-    description = editDescription;
-    inputImg = editImg;
-    price = editPrice;
-    condition = editCondition;
-    
-    closeEdit();
-  });
-
+  // Event listener for the edit button
   editBtn.addEventListener("click", () => {
-    document.getElementById("edit-title-input").value = itemName;
-    document.getElementById("edit-description-input").value = description;
-    document.getElementById("edit-img-input").value = inputImg;
-    document.getElementById("edit-price-input").value = price;
-    document.getElementById("edit-condition-input").value = condition;
-    openEdit();
+      openEdit();
+      document.getElementById("edit-title-input").value = itemName;
+      document.getElementById("edit-description-input").value = description;
+      document.getElementById("edit-img-input").value = inputImg;
+      document.getElementById("edit-price-input").value = price;
+      document.getElementById("edit-condition-input").value = condition;
+
+      // Event listener for the edit form submit
+      editForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const editTitle = document.getElementById("edit-title-input").value;
+          const editDescription = document.getElementById("edit-description-input").value;
+          const editImg = document.getElementById("edit-img-input").value;
+          const editPrice = document.getElementById("edit-price-input").value;
+          const editCondition = document.getElementById("edit-condition-input").value;
+
+          if (!validPrice.test(editPrice)) {
+              errorText.style.display = "block";
+              errorText.innerText = `Please enter a valid price like 10.99 or 1.44`;
+              return;
+          }
+
+          errorText.style.display = "none";
+
+          displayTitle.innerText = editTitle;
+          displayDescription.innerText = editDescription;
+          displayImg.src = editImg;
+          displayImg.alt = `image of ${editImg}`;
+          priceCondContainer.innerText = `${editCondition} - $${editPrice}`;
+
+          // Update the item data
+          itemName = editTitle;
+          description = editDescription;
+          inputImg = editImg;
+          price = editPrice;
+          condition = editCondition;
+
+          closeEdit();
+      });
   });
 
+  // Reset form and close it
   form.reset();
   closeForm();
 });
